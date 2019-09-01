@@ -83,15 +83,10 @@ def wave(period=0.1):
                          json={"state": "on"})
             time.sleep(period)
 
-            for pin in pins:
-                requests.put(urljoin(HOST, f"pins/{str(pin['id'])}"),
-                             json={"state": "on"})
-                time.sleep(period)
-
-            for pin in reversed(pins):
-                requests.put(urljoin(HOST, f"pins/{str(pin['id'])}"),
-                             json={"state": "off"})
-                time.sleep(period)
+        for pin in reversed(pins):
+            requests.put(urljoin(HOST, f"pins/{str(pin['id'])}"),
+                         json={"state": "off"})
+            time.sleep(period)
 
 
 def single_rand(period=0.1):

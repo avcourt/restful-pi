@@ -127,10 +127,11 @@ Once you're tired of manually sending HTTP requests through Swagger(curl), open 
 e.g.:
 `control.color_on("red")`
 
-The functions that have the `period` float param have a default value for oscillation. Experiement with different values.
+The functions that have the `period` float paramater have a default value for oscillation. Experiment with different values.
 
 Try making your own functions or messing around with the ones included in this repo.
 
 ## Cleanup
 `pip3 uninstall -r requirements.txt`
 
+If you have any questions you can join my Discord [server](https://discord.gg/5PfXqqr).

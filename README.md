@@ -51,10 +51,27 @@ The 4 HTTP verbs correspond to the typical CRUD operations:
     ```
  - PUT `pins/<id>` : **Update** a pin given its resource id
     - You can update a single field, or all fields (except for its uid which is READONLY)
-    - e.g. Update the state of pin with id 3:
+    - e.g. Update the state of pin with id 2:
         - PUT `/pins/2` 
             ```json
             {"state": "off"}
             ```
+     - e.g. Update all fields of pin with id 2:
+        - PUT `/pins/2` 
+            ```json
+            {
+                "pin_num": 24,
+                "color": "blue",
+                "state": "off"
+            }
+            ```
+ - DELETE `pins/<id>` : **Delete** pin<id> from system
+    
+## Breadboard Setup
+For this project to work without modifying the code, you will need:
+    - 9 x (preferably multicolored leds, 3xR,1xG,2xB,3xY in my case)
+    - 9 x 1k resistors (anything over 100Ω should be fine)
+    - 1 x breadboard
+    - 10 x GPIO connecting cables
     
 

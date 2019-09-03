@@ -7,14 +7,14 @@ from urllib.parse import urljoin
 HOST = 'http://localhost:5000'
 
 
-def toggle_color(color: str, on_off: str):
+def toggle_color(color: str, state: str):
     pins = requests.get(urljoin(HOST, 'pins')).json()
 
     switch_pins = [pin['id'] for pin in pins if pin['color'] == color]
 
     for pin in switch_pins:
         requests.put(urljoin(HOST, f"pins/{str(pin)}"),
-                     json={"state": on_off})
+                     json={"state": state})
 
 
 def switch_all(state: str):

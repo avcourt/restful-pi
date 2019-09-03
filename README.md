@@ -1,6 +1,7 @@
 # RESTful Pi
-This is a Flask app written in Python3. This app is REST backend to control the GPIO pins (turn on and off LEDs) of a Raspberry Pi by making HTTP requests to the `/pins` and `/pins/<id>` endpoints of the Flask webserver.
+This is a Flask app written in Python3. This app is a REST API backend to control the GPIO pins (turn on and off LEDs) of a Raspberry Pi by making HTTP requests to the `/pins` and `/pins/<id>` endpoints of the Flask webserver.
 
+## HTTP Methods
 These requests use the standard HTTP requests `GET`, `POST`, `PUT`, and `DELETE`.
 
 The JSON model of the `pin` resource is:
@@ -76,7 +77,8 @@ For this project to work without modifying the code, you will need:
 
 There are many kits available on Amazon for under $20.
     
-### Schematic
+### GPIO Pins
+This code uses the following configuration:
 ```json
 {"pin_num": 23, "color": "red",}
 {"pin_num": 24, "color": "yellow"},
@@ -88,3 +90,17 @@ There are many kits available on Amazon for under $20.
 {"pin_num": 21, "color": "green"},
 {"pin_num": 13, "color": "yellow"}
 ```
+*Note*: **These pin numbers refer to the GPIO pin numbers, not the generic numbering**
+![GPIO](img/rpi_gpio.jpg)
+
+### Schematic
+![Schematic](img/schematic.png)
+
+## Running
+Once you have your board setup and connected to the Pi and have a connection to your Raspberry Pi, either remotely via SSH(check out my [tutorial](https://www.youtube.com/watch?v=Lr3LLpVBSUk) on SSH access) or locally through a desktop OS on your Raspberry Pi:
+- `git clone https://github.com/avcourt/restful-pi2/`
+- `cd restful-pi`
+- `sudo apt install python3-pip`
+- `pip3 isntall -r requirements.txt`
+- `python3 app`
+

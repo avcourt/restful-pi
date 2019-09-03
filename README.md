@@ -101,7 +101,7 @@ Once you have your board setup and connected to the Pi and have a connection to 
 - `git clone https://github.com/avcourt/restful-pi2/`
 - `cd restful-pi`
 - `sudo apt install python3-pip`
-- `pip3 isntall -r requirements.txt`
+- `pip3 install -r requirements.txt`
 - `python3 app`
 
 If you are running this locally on the pi with a desktop, point your browser at localhost:5000 and you will be greeted by a SwaggerUI to make HTTP requests.

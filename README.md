@@ -102,6 +102,7 @@ Once you have your board setup and connected to the Pi and have a connection to 
 - `cd restful-pi`
 - `sudo apt install python3-pip`
 - `pip3 install -r requirements.txt`
+- `pip3 install RPi.GPIO`
 - `python3 app`
 
 If you are running this locally on the pi with a desktop, point your browser at localhost:5000 and you will be greeted by a SwaggerUI to make HTTP requests.

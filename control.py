@@ -8,7 +8,7 @@ HOST = 'http://localhost:5000'
 
 
 def toggle_color(color: str, state: str):
-    pins = requests.get(urljoin(HOST, 'pins')).json()
+    pins = requests.get(urljoin(HOST, 'pins/')).json()
 
     switch_pins = [pin['id'] for pin in pins if pin['color'] == color]
 

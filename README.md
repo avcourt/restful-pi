@@ -110,9 +110,8 @@ If you developing remotely through SSH access you will have to create a SSH tunn
 
 Once you're tired of manually sending HTTP requests through Swagger(curl), open a Python3 shell in this repo's root directory:
 - `python3`
-- import control.py
-and test out some of the functions:
-
+- `import control.py`
+- test out some of the functions:
     - `toggle_color(color: str, state: str)`
     - `switch_all(state: str)`
     - `all_on()`

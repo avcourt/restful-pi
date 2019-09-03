@@ -126,6 +126,7 @@ Once you're tired of manually sending HTTP requests through Swagger(curl), open 
 
 e.g.:
 `control.color_on("red")`
+
 The functions that have the `period` float param have a default value for oscillation. Experiement with different values.
 
 Try making your own functions or messing around with the ones included in this repo.

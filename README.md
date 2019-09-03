@@ -6,10 +6,10 @@ These requests use the standard HTTP requests `GET`, `POST`, `PUT`, and `DELETE`
 The JSON model of the `pin` resource is:
 ```json 
     {
-        "id": fields.Integer(readonly=True, description='The pin unique identifier'),
-        "pin_num": Integer(required=True, description='GPIO pin associated with this endpoint'),
-        "color": String(required=True, description='LED color'),
-        "state": String(required=True, description='LED on or off')
+        "id": "Integer(readonly=True, description='The pin unique identifier')",
+        "pin_num": "Integer(required=True, description='GPIO pin associated with this endpoint')",
+        "color": "String(required=True, description='LED color')",
+        "state": "String(required=True, description='LED on or off')"
     }
 ```
 

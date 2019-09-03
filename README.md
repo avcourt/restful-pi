@@ -16,36 +16,36 @@ The JSON model of the `pin` resource is:
 The 4 HTTP verbs correspond to the typical CRUD operations:
 - POST `pins/` : **Create** a new pin
     - where the posted data is JSON looking somethign like the following:
-        ```
+        ```json
         {
             "pin_num": 23,
-            "color": "red,
+            "color": "red",
             "state": "on"
         }
         ```
 - GET `pins/`: Fetech (**Read**) all pins stored on the system
     - e.g:
-      ```
+      ```json
         {
             "id: "1",
             "pin_num": 23,
-            "color": "red,
+            "color": "red",
             "state": "on"
         },
         {
             "id": "2",
             "pin_num": 24,
-            "color": "blue,
+            "color": "blue",
             "state": "off"
         }
         ```
  - GET `pins/<id>`: Fetch a pin given its resource identifier
     - e.g. GET `pins/2`:
-    ```
+    ```json
         {
             "id": "2",
             "pin_num": 24,
-            "color": "blue,
+            "color": "blue",
             "state": "off"
         }
     ```

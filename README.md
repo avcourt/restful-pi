@@ -111,28 +111,35 @@ If you developing remotely through SSH access you will have to create a SSH tunn
 Once you're tired of manually sending HTTP requests through Swagger(curl), open a Python3 shell in this repo's root directory:
 - `python3`
 - import control.py
-and test out some of the methods
+and test out some of the functions:
 
-`toggle_color(color: str, state: str)`
+- `toggle_color(color: str, state: str)`
 
-`switch_all(state: str)`
+- `switch_all(state: str)`
 
-`all_on()`
+- `all_on()`
 
-`all_off()`
+- `all_off()`
 
-`color_on(color: str)`
+- `color_on(color: str)`
 
-`color_off(color: str)`
+- `color_off(color: str)`
 
-`random_stuff()`
+- `random_stuff()`
 
-`rainbow(period=0.5)`
+- `rainbow(period=0.5)`
 
-`on_off(period=0.5)`
+- `on_off(period=0.5)`
 
-`wave(period: float)`
+- `wave(period: float)`
 
-`single_rand(period: float)`
+- `single_rand(period: float)`
 
+e.g.:
+`control.color_on("red")`
+
+Try making your own fucntions or messing around with the ones included in this repo.
+
+## Cleanup
+`pip3 uninstall -r requirements.txt`
 

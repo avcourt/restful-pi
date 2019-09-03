@@ -1,4 +1,4 @@
-# RESTful PI
+# RESTful Pi
 This is a Flask app written in Python3. This app is REST backend to control the GPIO pins (turn on and off LEDs) of a Raspberry Pi by making HTTP requests to the `/pins` and `/pins/<id>` endpoints of the Flask webserver.
 
 These requests use the standard HTTP requests `GET`, `POST`, `PUT`, and `DELETE`.
@@ -27,7 +27,7 @@ The 4 HTTP verbs correspond to the typical CRUD operations:
     - e.g:
       ```json
         {
-            "id: "1",
+            "id": "1",
             "pin_num": 23,
             "color": "red",
             "state": "on"
@@ -49,4 +49,12 @@ The 4 HTTP verbs correspond to the typical CRUD operations:
             "state": "off"
         }
     ```
+ - PUT `pins/<id>` : **Update** a pin given its resource id
+    - You can update a single field, or all fields (except for its uid which is READONLY)
+    - e.g. Update the state of pin with id 3:
+        - PUT `/pins/2` 
+            ```json
+            {"state": "off"}
+            ```
+    
 

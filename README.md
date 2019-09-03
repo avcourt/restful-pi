@@ -119,14 +119,14 @@ Once you're tired of manually sending HTTP requests through Swagger(curl), open 
     - `color_on(color: str)`
     - `color_off(color: str)`
     - `random_stuff()`
-    - `rainbow(period=0.5)`
-    - `on_off(period=0.5)`
+    - `rainbow(period: float)`
+    - `on_off(period: float)`
     - `wave(period: float)`
     - `single_rand(period: float)`
 
 e.g.:
 `control.color_on("red")`
-
+The functions that have the `period` float param have a default value for oscillation. Experiement with different values.
 Try making your own fucntions or messing around with the ones included in this repo.
 
 ## Cleanup

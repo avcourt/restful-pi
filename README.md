@@ -69,9 +69,22 @@ The 4 HTTP verbs correspond to the typical CRUD operations:
     
 ## Breadboard Setup
 For this project to work without modifying the code, you will need:
-    - 9 x (preferably multicolored leds, 3xR,1xG,2xB,3xY in my case)
-    - 9 x 1k resistors (anything over 100Ω should be fine)
-    - 1 x breadboard
-    - 10 x GPIO connecting cables
-    
+- 9 x (preferably multicolored leds, 3xR,1xG,2xB,3xY in my case)
+- 9 x 1k resistors (anything over 100Ω should be fine)
+- 1 x breadboard
+- 10 x GPIO connecting cables
 
+There are many kits available on Amazon for under $20.
+    
+### Schematic
+```json
+{"pin_num": 23, "color": "red",}
+{"pin_num": 24, "color": "yellow"},
+{"pin_num": 25, "color": "blue"},
+{"pin_num": 22, "color": "red"},
+{"pin_num": 12, "color": "yellow"},
+{"pin_num": 16, "color": "blue"},
+{"pin_num": 20, "color": "red"},
+{"pin_num": 21, "color": "green"},
+{"pin_num": 13, "color": "yellow"}
+```

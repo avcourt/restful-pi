@@ -107,7 +107,7 @@ Once you have your board setup and connected to the Pi and have a connection to 
 
 If you are running this locally on the pi with a desktop, point your browser at localhost:5000 and you will be greeted by a SwaggerUI to make HTTP requests.
 
-If you developing remotely through SSH access you will have to create a SSH tunnel from your localmachine to the raspberry pi in order to access the SwaggerUI. Check out [this](video) video for hwo to do that.
+If you developing remotely through SSH access you will have to create a SSH tunnel from your local machine to the Raspberry Pi in order to access the SwaggerUI. Check out [this](video) video for how to do that.
 
 Once you're tired of manually sending HTTP requests through Swagger(curl), open a Python3 shell in this repo's root directory:
 - `python3`

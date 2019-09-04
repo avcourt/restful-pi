@@ -21,7 +21,7 @@ for pin in pins:
 def toggle_color(color: str, state: str):
     pin_nums = [pin['pin_num'] for pin in pins if pin['color'] == color]
     for pin_num in pin_nums:
-        if state == 'on'
+        if state == 'on':
             GPIO.output(pin_num, GPIO.HIGH)
         elif state == 'off':
             GPIO.output(pin_num, GPIO.LOW)

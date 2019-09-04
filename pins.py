@@ -1,17 +1,5 @@
 import RPi.GPIO as GPIO
 
-GPIO.setmode(GPIO.BCM)
-
-GPIO.setup(23, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(24, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(25, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(22, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(12, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(16, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(20, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(21, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(13, GPIO.OUT, initial=GPIO.LOW)
-
 pins = [{'pin_num': 23, 'color': 'red'},
         {'pin_num': 24, 'color': 'yellow'},
         {'pin_num': 25, 'color': 'blue'},
@@ -21,6 +9,12 @@ pins = [{'pin_num': 23, 'color': 'red'},
         {'pin_num': 20, 'color': 'red'},
         {'pin_num': 21, 'color': 'green'},
         {'pin_num': 13, 'color': 'yellow'}]
+
+GPIO.setmode(GPIO.BCM) # use GPIO numbering, not generic
+
+# setup all pins based on above configuration
+for pin in pins:
+	GPIO.setup(pin['pin_num'], GPIO.OUT, initial=GPIO.LOW)
 
 
 def color_on(color: str):

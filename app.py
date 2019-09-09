@@ -10,7 +10,7 @@ api = Api(app,
           description='A RESTful API to control the GPIO pins of a Raspbery Pi',
           doc='/docs')
 
-ns = api.namespace('pins', description='pin operations')
+ns = api.namespace('pins', description='Pin related operations')
 
 pin_model = api.model('pins', {
     'id': fields.Integer(readonly=True, description='The pin unique identifier'),

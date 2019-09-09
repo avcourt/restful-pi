@@ -5,24 +5,26 @@ import time
 from urllib.parse import urljoin
 
 HOST = 'http://localhost:5000'
+PIN_ENDPOINT = 'pins/'
+PINS = urljoin(HOST, PIN_ENDPOINT)
 
 
 def toggle_color(color: str, state: str):
-    pins = requests.get(urljoin(HOST, 'pins/')).json()
+    pins = requests.get(PINS).json()
 
     switch_pins = [pin['id'] for pin in pins if pin['color'] == color]
 
     for pin in switch_pins:
-        requests.put(urljoin(HOST, f"pins/{str(pin)}"),
+        requests.put(urljoin(PINS, str(pin)),
                      json={"state": state})
 
 
 def switch_all(state: str):
-    pins = requests.get(urljoin(HOST, 'pins')).json()
+    pins = requests.get(PINS).json()
 
     for pin in pins:
         if pin['state'] != state:
-            requests.put(urljoin(HOST, f"pins/{str(pin['id'])}"),
+            requests.put(urljoin(PINS, str(pin['id'])),
                          json={"state": state})
 
 
@@ -76,28 +78,28 @@ def on_off(period=0.5):
 
 def wave(period=0.1):
     while True:
-        pins = requests.get(urljoin(HOST, 'pins')).json()
+        pins = requests.get(PINS).json()
 
         for pin in pins:
-            requests.put(urljoin(HOST, f"pins/{str(pin['id'])}"),
+            requests.put(urljoin(PINS, str(pin['id'])),
                          json={"state": "on"})
             time.sleep(period)
 
         for pin in reversed(pins):
-            requests.put(urljoin(HOST, f"pins/{str(pin['id'])}"),
+            requests.put(urljoin(PINS, str(pin['id'])),
                          json={"state": "off"})
             time.sleep(period)
 
 
 def single_rand(period=0.1):
-    pins = requests.get(urljoin(HOST, 'pins')).json()
+    pins = requests.get(PINS).json()
 
     while True:  # assume no pins are changed while running this func
         pin = random.choice(pins)
-        requests.put(urljoin(HOST, f"pins/{str(pin['id'])}"),
+        requests.put(urljoin(PINS, str(pin['id'])),
                      json={"state": "on"})
         time.sleep(period)
-        requests.put(urljoin(HOST, f"pins/{str(pin['id'])}"),
+        requests.put(urljoin(PINS, str(pin['id'])),
                      json={"state": "off"})
 
 

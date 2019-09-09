@@ -10,7 +10,7 @@ api = Api(app,
           version='1.0',
           title='LED Switch',
           description='A RESTful API to control the GPIO pins of a Raspbery Pi',
-          )
+          doc='/docs')
 
 ns = api.namespace('pins', description='pin operations')
 
@@ -48,7 +48,7 @@ class PinUtil(object):
 
     def update(self, id, data):
         pin = self.get(id)
-        pin.update(data)
+        pin.update(data)  # this is the dict_object update method
         GPIO.setup(pin['pin_num'], GPIO.OUT)
 
         if pin['state'] == 'off':

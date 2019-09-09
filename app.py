@@ -2,10 +2,8 @@ from flask import Flask
 from flask_restplus import Api, Resource, fields
 import RPi.GPIO as GPIO
 
-# todo close down pin properly upon deletion
 
 app = Flask(__name__)
-
 api = Api(app,
           version='1.0',
           title='LED Switch',
@@ -64,21 +62,21 @@ class PinUtil(object):
         self.pins.remove(pin)
 
 
-@ns.route('/')
+@ns.route('/')  # keep in mind this our ns-namespace (pins/)
 class PinList(Resource):
-    '''Shows a list of all pins, and lets you POST to add new pins'''
+    """Shows a list of all pins, and lets you POST to add new pins"""
 
     @ns.doc('list_pins')
     @ns.marshal_list_with(pin_model)
     def get(self):
-        '''List all pins'''
+        """List all pins"""
         return pin_util.pins
 
     @ns.doc('create_pin')
     @ns.expect(pin_model)
     @ns.marshal_with(pin_model, code=201)
     def post(self):
-        '''Create a new pin'''
+        """Create a new pin"""
         return pin_util.create(api.payload), 201
 
 
@@ -86,25 +84,25 @@ class PinList(Resource):
 @ns.response(404, 'pin not found')
 @ns.param('id', 'The pin identifier')
 class Pin(Resource):
-    '''Show a single pin item and lets you update/delete them'''
+    """Show a single pin item and lets you update/delete them"""
 
     @ns.doc('get_pin')
     @ns.marshal_with(pin_model)
     def get(self, id):
-        '''Fetch a pin given its resource identifier'''
+        """Fetch a pin given its resource identifier"""
         return pin_util.get(id)
 
     @ns.doc('delete_pin')
     @ns.response(204, 'pin deleted')
     def delete(self, id):
-        '''Delete a pin given its identifier'''
+        """Delete a pin given its identifier"""
         pin_util.delete(id)
         return '', 204
 
     @ns.expect(pin_model)
     @ns.marshal_with(pin_model)
     def put(self, id):
-        '''Update a pin given its identifier'''
+        """Update a pin given its identifier"""
         return pin_util.update(id, api.payload)
 
 

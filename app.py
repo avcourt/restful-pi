@@ -49,6 +49,7 @@ class PinUtil(object):
     def update(self, id, data):
         pin = self.get(id)
         pin.update(data)
+        GPIO.setup(pin['pin_num'], GPIO.OUT)
 
         if pin['state'] == 'off':
             GPIO.output(pin['pin_num'], GPIO.LOW)

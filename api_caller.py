@@ -44,7 +44,7 @@ def color_off(color: str):
     toggle_color(color, 'off')
 
 
-def random_stuff():
+def random_stuff(max_period=0.5):
     all_list = [all_on, all_off]
     color_functs = [color_off, color_on]
 
@@ -52,11 +52,11 @@ def random_stuff():
 
     while True:
         random.choice(all_list)
-        time.sleep(0.3)
+        time.sleep(random.uniform(0.1, max_period))
         random.choice(color_functs)(random.choice(colors))
-        time.sleep(0.2)
+        time.sleep(random.uniform(0.1, max_period))
         random.choice(color_functs)(random.choice(colors))
-        time.sleep(0.5)
+        time.sleep(random.uniform(0.1, max_period))
 
 
 def rainbow(period=0.5):

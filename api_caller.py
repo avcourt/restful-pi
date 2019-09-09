@@ -45,7 +45,7 @@ def color_off(color: str):
 
 
 def random_stuff(max_period=0.5):
-    all_list = [all_on, all_off, on_off]
+    all_list = [all_on, all_off]
     color_functs = [color_off, color_on]
 
     colors = ['red', 'blue', 'green', 'yellow']

@@ -51,7 +51,7 @@ def random_stuff(max_period=0.5):
     colors = ['red', 'blue', 'green', 'yellow']
 
     while True:
-        random.choice(all_list)
+        random.choice(all_list)()
         time.sleep(random.uniform(0.1, max_period))
         random.choice(color_functs)(random.choice(colors))
         time.sleep(random.uniform(0.1, max_period))

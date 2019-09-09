@@ -24,7 +24,9 @@ The 4 HTTP verbs correspond to the typical CRUD operations:
             "state": "on"
         }
         ```
-- GET `pins/`: Fetech (**Read**) all pins stored on the system
+     - STATUS Code 201 Created - the new resource is returned in the body of the message
+     
+- GET `pins/`: Fetech (**Read**) all pins stored on the system - STATUS 200 on success
     - e.g:
       ```json
         {
@@ -40,8 +42,7 @@ The 4 HTTP verbs correspond to the typical CRUD operations:
             "state": "off"
         }
         ```
- - GET `pins/<id>`: Fetch a pin given its resource identifier
-    - e.g. GET `pins/2`:
+ - GET `pins/<id>`: Fetch a pin given its resource identifier - STATUS 200 on success
     ```json
         {
             "id": "2",
@@ -50,7 +51,7 @@ The 4 HTTP verbs correspond to the typical CRUD operations:
             "state": "off"
         }
     ```
- - PUT `pins/<id>` : **Update** a pin given its resource id
+ - PUT `pins/<id>` : **Update** a pin given its resource id - STATUS 200 on success
     - You can update a single field, or all fields (except for its uid which is READONLY)
     - e.g. Update the state of pin with id 2:
         - PUT `/pins/2` 
@@ -66,7 +67,7 @@ The 4 HTTP verbs correspond to the typical CRUD operations:
                 "state": "off"
             }
             ```
- - DELETE `pins/<id>` : **Delete** pin<id> from system
+ - DELETE `pins/<id>` : **Delete** pin<id> from system - STATUS 204 : Ok, no content
     
 ## Breadboard Setup
 For this project to work without modifying the code, you will need:

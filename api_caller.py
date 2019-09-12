@@ -15,7 +15,7 @@ def toggle_color(color: str, state: str):
     switch_pins = [pin['id'] for pin in pins if pin['color'] == color]
 
     for pin in switch_pins:
-        requests.put(urljoin(PINS, str(pin)),
+        requests.patch(urljoin(PINS, str(pin)),
                      json={"state": state})
 
 
@@ -24,7 +24,7 @@ def switch_all(state: str):
 
     for pin in pins:
         if pin['state'] != state:
-            requests.put(urljoin(PINS, str(pin['id'])),
+            requests.patch(urljoin(PINS, str(pin['id'])),
                          json={"state": state})
 
 
@@ -81,12 +81,12 @@ def wave(period=0.1):
         pins = requests.get(PINS).json()
 
         for pin in pins:
-            requests.put(urljoin(PINS, str(pin['id'])),
+            requests.patch(urljoin(PINS, str(pin['id'])),
                          json={"state": "on"})
             time.sleep(period)
 
         for pin in reversed(pins):
-            requests.put(urljoin(PINS, str(pin['id'])),
+            requests.patch(urljoin(PINS, str(pin['id'])),
                          json={"state": "off"})
             time.sleep(period)
 
@@ -96,10 +96,10 @@ def single_rand(period=0.1):
 
     while True:  # assume no pins are changed while running this func
         pin = random.choice(pins)
-        requests.put(urljoin(PINS, str(pin['id'])),
+        requests.patch(urljoin(PINS, str(pin['id'])),
                      json={"state": "on"})
         time.sleep(period)
-        requests.put(urljoin(PINS, str(pin['id'])),
+        requests.patch(urljoin(PINS, str(pin['id'])),
                      json={"state": "off"})
 
 

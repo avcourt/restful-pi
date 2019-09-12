@@ -92,9 +92,8 @@ def wave(period=0.1):
 
 
 def single_rand(period=0.1):
-    pins = requests.get(PINS).json()
-
-    while True:  # assume no pins are changed while running this func
+    while True:
+        pins = requests.get(PINS).json()
         pin = random.choice(pins)
         requests.patch(urljoin(PINS, str(pin['id'])),
                      json={"state": "on"})

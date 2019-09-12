@@ -66,13 +66,11 @@ class PinUtil(object):
 class PinList(Resource):
     """Shows a list of all pins, and lets you POST to add new pins"""
 
-    @ns.doc('list_pins')
     @ns.marshal_list_with(pin_model)
     def get(self):
         """List all pins"""
         return pin_util.pins
 
-    @ns.doc('create_pin')
     @ns.expect(pin_model)
     @ns.marshal_with(pin_model, code=201)
     def post(self):
@@ -86,13 +84,11 @@ class PinList(Resource):
 class Pin(Resource):
     """Show a single pin item and lets you update/delete them"""
 
-    @ns.doc('get_pin')
     @ns.marshal_with(pin_model)
     def get(self, id):
         """Fetch a pin given its resource identifier"""
         return pin_util.get(id)
 
-    @ns.doc('delete_pin')
     @ns.response(204, 'pin deleted')
     def delete(self, id):
         """Delete a pin given its identifier"""

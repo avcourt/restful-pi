@@ -29,7 +29,7 @@ class PinUtil(object):
         for pin in self.pins:
             if pin['id'] == id:
                 return pin
-        api.abort(404, f"pin {id} doesn't exist")
+        api.abort(404, f"pin {id} doesn't exist.")
 
     def create(self, data):
         pin = data
@@ -108,7 +108,7 @@ class Pin(Resource):
     @ns.expect(pin_model)
     @ns.marshal_with(pin_model)
     def patch(self, id):
-        """Update a pin given its identifier"""
+        """Partially update a pin given its identifier"""
         return pin_util.update(id, api.payload)
 
 

@@ -2,7 +2,7 @@
 This is a Flask app written in Python3. This app is a REST API backend to control the GPIO pins (turn on and off LEDs) of a Raspberry Pi by making HTTP requests to the `/pins` and `/pins/<id>` endpoints of the Flask webserver.
 
 ## HTTP Methods
-These requests use the standard HTTP requests `GET`, `POST`, `PUT`, and `DELETE`.
+These requests use the standard HTTP requests `GET`, `POST`, `PUT`, and `DELETE`. We will also use `PATCH` for partial updates because we can then just send a state update to an existing pin endpoint. This will make sending requests through the Python `requests` library a little more succint, as we'll mainly be interested in changing the state for making our light show.
 
 The JSON model of the `pin` resource is:
 ```json 
@@ -52,12 +52,10 @@ The 4 HTTP verbs correspond to the typical CRUD operations:
         }
     ```
  - PUT `pins/<id>` : **Update** a pin given its resource id - STATUS 200 on success
-    - You can update a single field, or all fields (except for its uid which is READONLY)
-    - e.g. Update the state of pin with id 2:
-        - PUT `/pins/2` 
-            ```json
-            {"state": "off"}
-            ```
+    - Generally in RESTful APIs a PUT should send an entire resource for updating.
+    
+    - Update all fields (except for its uid which is READONLY)
+
      - e.g. Update all fields of pin with id 2:
         - PUT `/pins/2` 
             ```json
@@ -68,6 +66,14 @@ The 4 HTTP verbs correspond to the typical CRUD operations:
             }
             ```
  - DELETE `pins/<id>` : **Delete** pin<id> from system - STATUS 204 : Ok, no content
+    
+ - PATCH `pins/<id>` : **Partially Update** a pin given its resource id - STATUS 200 on success
+    - You can update a single field, or all fields (except for its uid which is READONLY)
+    - e.g. Update the state of pin with id 2:
+        - PUT `/pins/2` 
+            ```json
+            {"state": "off"}
+            ```
     
 ## Breadboard Setup
 For this project to work without modifying the code, you will need:

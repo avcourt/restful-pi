@@ -14,7 +14,7 @@ The JSON model of the `pin` resource is:
     }
 ```
 
-The 4 HTTP verbs correspond to the typical CRUD operations:
+The HTTP verbs correspond to the typical CRUD operations:
 - POST `pins/` : **Create** a new pin
     - where the posted data is JSON looking something like the following:
         ```json

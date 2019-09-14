@@ -109,7 +109,6 @@ Once you have your board setup and connected to the Pi and have a connection to 
 - `cd restful-pi`
 - `sudo apt install python3-pip`
 - `pip3 install -r requirements.txt`
-- `pip3 install RPi.GPIO`
 - `python3 app`
 
 If you are running this locally on the pi with a desktop, point your browser at localhost:5000 and you will be greeted by a SwaggerUI to make HTTP requests.
@@ -118,7 +117,7 @@ If you developing remotely through SSH access you will have to create a SSH tunn
 
 Once you're tired of manually sending HTTP requests through Swagger(curl), open a Python3 shell in this repo's root directory:
 - `python3`
-- `import control.py`
+- `import api_caller.py`
 - test out some of the functions:
     - `toggle_color(color: str, state: str)`
     - `switch_all(state: str)`
@@ -133,7 +132,7 @@ Once you're tired of manually sending HTTP requests through Swagger(curl), open 
     - `single_rand(period: float)`
 
 e.g.:
-`control.color_on("red")`
+`api_caller.color_on("red")`
 
 The functions that have the `period` float paramater have a default value for oscillation. Experiment with different values.
 

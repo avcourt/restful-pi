@@ -6,7 +6,7 @@ import RPi.GPIO as GPIO
 app = Flask(__name__)
 api = Api(app,
           version='1.0',
-          title='LED Switch',
+          title='RESTful Pi',
           description='A RESTful API to control the GPIO pins of a Raspbery Pi',
           doc='/docs')
 

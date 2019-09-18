@@ -47,15 +47,18 @@ def all_off():
         GPIO.output(pin['pin_num'], GPIO.LOW)
 
 
-def strobe_reg(period=0.5):
-    while True:
+def strobe_reg(period=0.5, run_time=20):
+    start = time.time()
+    curr = time.time()
+    while curr - start < run_time:
         all_on()
         time.sleep(period)
         all_off()
         time.sleep(period)
+        curr = time.time()
 
 
-def strobe_rand(min_time=0, max_time=1.2, run_time=30):
+def strobe_rand(min_time=0, max_time=1.2, run_time=20):
     start = time.time()
     curr = time.time()
     while curr-start < run_time:
@@ -67,7 +70,9 @@ def strobe_rand(min_time=0, max_time=1.2, run_time=30):
 
 
 def wave_reg(period=0.1, run_time=20):
-    while True:
+    start = time.time()
+    curr = time.time()
+    while curr - start < run_time:
         for pin in pins:
             GPIO.output(pin['pin_num'], GPIO.HIGH)
             time.sleep(period)
@@ -75,10 +80,13 @@ def wave_reg(period=0.1, run_time=20):
         for pin in reversed(pins):
             GPIO.output(pin['pin_num'], GPIO.LOW)
             time.sleep(period)
+        curr = time.time()
 
 
-def wave_rand(min_time=0, max_time=0.4):
-    while True:
+def wave_rand(min_time=0, max_time=0.4, run_time=20):
+    start = time.time()
+    curr = time.time()
+    while curr - start < run_time:
         period = random.uniform(min_time, max_time)
         for pin in pins:
             GPIO.output(pin['pin_num'], GPIO.HIGH)
@@ -88,10 +96,13 @@ def wave_rand(min_time=0, max_time=0.4):
         for pin in reversed(pins):
             GPIO.output(pin['pin_num'], GPIO.LOW)
             time.sleep(period)
+        curr = time.time()
 
 
-def wave_rand_ex(min_time=0, max_time=0.4):
-    while True:
+def wave_rand_ex(min_time=0, max_time=0.4, run_time=20):
+    start = time.time()
+    curr = time.time()
+    while curr - start < run_time:
         for pin in pins:
             GPIO.output(pin['pin_num'], GPIO.HIGH)
             time.sleep(random.uniform(min_time, max_time))
@@ -99,3 +110,4 @@ def wave_rand_ex(min_time=0, max_time=0.4):
         for pin in reversed(pins):
             GPIO.output(pin['pin_num'], GPIO.LOW)
             time.sleep(random.uniform(min_time, max_time))
+        curr = time.time()

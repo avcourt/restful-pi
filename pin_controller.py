@@ -90,6 +90,7 @@ def wave_rand(min_time=0.05, max_time=0.2):
             GPIO.output(pin['pin_num'], GPIO.HIGH)
             time.sleep(period)
 
+        period = random.uniform(min_time, max_time)
         for pin in reversed(pins):
             GPIO.output(pin['pin_num'], GPIO.LOW)
             time.sleep(period)

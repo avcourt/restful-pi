@@ -63,15 +63,8 @@ def strobe_reg(period=0.5):
         time.sleep(period)
 
 
-def strobe_reg(period=0.5):
-    while True:
-        all_on()
-        time.sleep(period)
-        all_off()
-        time.sleep(period)
 
-
-def strobe_rand(min_time=0.1, max_time=1.5):
+def strobe_rand(min_time=0, max_time=1.2):
     while True:
         all_on()
         time.sleep(random.uniform(min_time, max_time))

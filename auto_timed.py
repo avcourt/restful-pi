@@ -63,6 +63,7 @@ def strobe_rand(min_time=0, max_time=1.2, run_time=30):
         time.sleep(random.uniform(min_time, max_time))
         all_off()
         time.sleep(random.uniform(min_time, max_time))
+        curr = time.time()
 
 
 def wave_reg(period=0.1, run_time=20):

@@ -72,8 +72,20 @@ def strobe_rand(min_time=0, max_time=1.2):
         time.sleep(random.uniform(min_time, max_time))
 
 
-def wave(period=0.1):
+def wave_reg(period=0.1):
     while True:
+        for pin in pins:
+            GPIO.output(pin['pin_num'], GPIO.HIGH)
+            time.sleep(period)
+
+        for pin in reversed(pins):
+            GPIO.output(pin['pin_num'], GPIO.LOW)
+            time.sleep(period)
+
+
+def wave_rand(min_time=0.05, max_time=0.2):
+    while True:
+        period = random.uniform(min_time, max_time)
         for pin in pins:
             GPIO.output(pin['pin_num'], GPIO.HIGH)
             time.sleep(period)

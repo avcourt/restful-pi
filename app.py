@@ -12,6 +12,7 @@ api = Api(app,
 
 ns = api.namespace('pins', description='Pin related operations')
 
+
 pin_model = api.model('pins', {
     'id': fields.Integer(readonly=True, description='The pin unique identifier'),
     'pin_num': fields.Integer(required=True, description='GPIO pin associated with this endpoint'),

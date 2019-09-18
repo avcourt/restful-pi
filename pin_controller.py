@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+import time
 
 pins = [{'pin_num': 23, 'color': 'red'},
         {'pin_num': 24, 'color': 'yellow'},
@@ -50,3 +51,11 @@ def pin_on(pin_num: int):
 
 def pin_off(pin_num: int):
     GPIO.output(pin_num, GPIO.LOW)
+
+
+def on_off(period=0.5):
+    while True:
+        all_on()
+        time.sleep(period)
+        all_off()
+        time.sleep(period)

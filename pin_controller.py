@@ -83,7 +83,7 @@ def wave_reg(period=0.1):
             time.sleep(period)
 
 
-def wave_rand(min_time=0.05, max_time=0.2):
+def wave_rand(min_time=0, max_time=0.4):
     while True:
         period = random.uniform(min_time, max_time)
         for pin in pins:

@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+import random
 import time
 
 pins = [{'pin_num': 23, 'color': 'red'},
@@ -12,6 +13,7 @@ pins = [{'pin_num': 23, 'color': 'red'},
         {'pin_num': 13, 'color': 'yellow'}]
 
 GPIO.setmode(GPIO.BCM)  # use GPIO numbering, not generic
+GPIO.setwarnings(False)
 
 # setup all pins based on above configuration
 for pin in pins:
@@ -53,9 +55,25 @@ def pin_off(pin_num: int):
     GPIO.output(pin_num, GPIO.LOW)
 
 
-def on_off(period=0.5):
+def strobe_reg(period=0.5):
     while True:
         all_on()
         time.sleep(period)
         all_off()
         time.sleep(period)
+
+
+def strobe_reg(period=0.5):
+    while True:
+        all_on()
+        time.sleep(period)
+        all_off()
+        time.sleep(period)
+
+
+def strobe_rand(min_time=0.1, max_time=1.5):
+    while True:
+        all_on()
+        time.sleep(random.uniform(min_time, max_time))
+        all_off()
+        time.sleep(random.uniform(min_time, max_time))

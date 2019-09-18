@@ -10,8 +10,7 @@ pins = [{'pin_num': 23, 'color': 'red'},
         {'pin_num': 21, 'color': 'green'},
         {'pin_num': 13, 'color': 'yellow'}]
 
-GPIO.setmode(GPIO.BCM) # use GPIO numbering, not generic
-
+GPIO.setmode(GPIO.BCM)  # use GPIO numbering, not generic
 
 # setup all pins based on above configuration
 for pin in pins:
@@ -35,14 +34,6 @@ def color_off(color: str):
     toggle_color(color, 'off')
 
 
-def pin_on(pin_num: int):
-    GPIO.output(pin_num, GPIO.HIGH)
-
-
-def pin_off(pin_num: int):
-    GPIO.output(pin_num, GPIO.LOW)
-
-
 def all_on():
     for pin in pins:
         GPIO.output(pin['pin_num'], GPIO.HIGH)
@@ -52,3 +43,10 @@ def all_off():
     for pin in pins:
         GPIO.output(pin['pin_num'], GPIO.LOW)
 
+
+def pin_on(pin_num: int):
+    GPIO.output(pin_num, GPIO.HIGH)
+
+
+def pin_off(pin_num: int):
+    GPIO.output(pin_num, GPIO.LOW)

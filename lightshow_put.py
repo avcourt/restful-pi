@@ -16,7 +16,7 @@ def toggle_color(color: str, state: str):
 
     for pin in switch_pins:
         pin['state'] = state
-        requests.put(urljoin(PINS, str(pin)),
+        requests.put(urljoin(PINS, str(pin['pin_num'])),
                      json=pin)
 
 

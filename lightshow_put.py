@@ -12,21 +12,21 @@ PINS = urljoin(HOST, PIN_ENDPOINT)
 def toggle_color(color: str, state: str):
     pins = requests.get(PINS).json()
 
-    switch_pins = [pin for pin in pins if pin['color'] == color]
-
-    for pin in switch_pins:
-        pin['state'] = state
-        requests.put(urljoin(PINS, str(pin['id'])),
-                     json=pin)
+    for pin in pins:
+        if pin['color'] == color:
+            pin['state'] = state
+            requests.put(urljoin(PINS, str(pin['id'])), json=pin)
 
 
 def switch_all(state: str):
     pins = requests.get(PINS).json()
 
     for pin in pins:
+        # don't bother sending requests to ones in correct state
         if pin['state'] != state:
-            requests.patch(urljoin(PINS, str(pin['id'])),
-                         json={"state": state})
+            pin['state'] = state
+            requests.put(urljoin(PINS, str(pin['id'])),
+                         json=pin)
 
 
 def all_on():
@@ -48,7 +48,6 @@ def color_off(color: str):
 def random_stuff(max_period=0.5):
     all_list = [all_on, all_off]
     color_functs = [color_off, color_on]
-
     colors = ['red', 'blue', 'green', 'yellow']
 
     while True:
@@ -82,13 +81,15 @@ def wave(period=0.1):
         pins = requests.get(PINS).json()
 
         for pin in pins:
-            requests.patch(urljoin(PINS, str(pin['id'])),
-                         json={"state": "on"})
+            pin['state'] = 'on'
+            requests.put(urljoin(PINS, str(pin['id'])),
+                         json=pin)
             time.sleep(period)
 
         for pin in reversed(pins):
-            requests.patch(urljoin(PINS, str(pin['id'])),
-                         json={"state": "off"})
+            pin['state'] = 'off'
+            requests.put(urljoin(PINS, str(pin['id'])),
+                         json=pin)
             time.sleep(period)
 
 
@@ -96,13 +97,14 @@ def single_rand(period=0.1):
     while True:
         pins = requests.get(PINS).json()
         pin = random.choice(pins)
-        requests.patch(urljoin(PINS, str(pin['id'])),
-                     json={"state": "on"})
+        pin['state'] = 'on'
+        requests.put(urljoin(PINS, str(pin['id'])),
+                     json=pin)
         time.sleep(period)
-        requests.patch(urljoin(PINS, str(pin['id'])),
-                     json={"state": "off"})
+        pin['state'] = 'off'
+        requests.put(urljoin(PINS, str(pin['id'])),
+                       json=pin)
 
 
 if __name__ == '__main__':
-    # random_stuff()
     rainbow()

@@ -86,6 +86,19 @@ def wave(period=0.1):
             time.sleep(period)
 
 
+def wave_rand_ex(min_time=0, max_time=0.4):
+    while True:
+        for pin in requests.get(PINS).json():
+            requests.patch(urljoin(PINS, str(pin['id'])),
+                           json={"state": "on"})
+            time.sleep(random.uniform(min_time, max_time))
+
+        for pin in reversed(pins):
+            requests.patch(urljoin(PINS, str(pin['id'])),
+                           json={"state": "off"})
+            time.sleep(random.uniform(min_time, max_time))
+
+
 def single_rand(period=0.1):
     while True:
         pins = requests.get(PINS).json()

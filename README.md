@@ -1,6 +1,10 @@
 # RESTful Pi
 This is a Flask app written in Python3. This app is a REST API backend to control the GPIO pins (turn on and off LEDs) of a Raspberry Pi by making HTTP requests to the `/pins` and `/pins/<id>` endpoints of the Flask webserver.
 
+A step-by-step tutorial I wrote to get started with this project can be found [here](https://avcourt.github.io/tiny-cluster/2019/09/18/pi_led.html).
+
+A video series I published on YouTube going over this project can be found [here](https://www.youtube.com/playlist?list=PLLIDdNg0t5ceg3mI3vn0YJocJ4ndMtM98).
+
 ## HTTP Methods
 These requests use the standard HTTP requests `GET`, `POST`, `PUT`, and `DELETE`. We will also use `PATCH` for partial updates to enable us to just send a `state` update to an existing pin endpoint. This will make sending requests through the Python `requests` library a little more succint, as we'll mainly be interested in changing the state for making our light show.
 

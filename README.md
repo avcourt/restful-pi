@@ -121,7 +121,7 @@ If you're developing remotely through SSH access you will have to create a SSH t
 
 Once you're tired of manually sending HTTP requests through Swagger(curl), open a Python3 shell in this repo's root directory:
 - `python3`
-- `import api_caller.py`
+- `import pin_controller.py`
 - test out some of the functions:
     - `toggle_color(color: str, state: str)`
     - `switch_all(state: str)`
@@ -136,7 +136,7 @@ Once you're tired of manually sending HTTP requests through Swagger(curl), open 
     - `single_rand(period: float)`
 
 e.g.:
-`api_caller.color_on("red")`
+`pin_controller.color_on("red")`
 
 The functions that have the `period` float paramater have a default value for oscillation. Experiment with different values.
 
